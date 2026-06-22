@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOM SIM 799 Plan Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        h2 {
+            color: #002d72;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        input[type="text"]:focus {
+            border-color: #002d72;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            background-color: #002d72;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #001f4d;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ATOM SIM Plan Checker</h2>
+    <p style="color: #666; font-size: 14px;">ဖုန်းနံပါတ်ထည့်ပြီး 799 Plan (3850MB) ပါမပါ စစ်ဆေးပါ</p>
+    
+    <input type="text" id="phoneNumber" placeholder="ဥပမာ - 0977xxxxxxx">
+    <button onclick="checkPlan()">စစ်ဆေးမည်</button>
+
+    <div id="resultBox" class="result"></div>
+</div>
+
+<script>
+    // 799 Plan ပါဝင်တဲ့ ဖုန်းနံပါတ်စာရင်းကို ဒီအောက်မှာ ထည့်ပေးပါ
+    const validNumbers = [
+        "09771234567",
+        "09772345678",
+        "09773456789",
+        "09761112223"
+    ];
+
+    function checkPlan() {
+        const inputNum = document.getElementById("phoneNumber").value.trim();
+        const resultBox = document.getElementById("resultBox");
+
+        if (inputNum === "") {
+            resultBox.style.display = "block";
+            resultBox.className = "result fail";
+            resultBox.innerHTML = "❌ ကျေးဇူးပြု၍ ဖုန်းနံပါတ် ရိုက်ထည့်ပါ။";
+            return;
+        }
+
+        if (validNumbers.includes(inputNum)) {
+            resultBox.style.display = "block";
+            resultBox.className = "result success";
+            resultBox.innerHTML = "🎉 799 Plan ပါရှိပါသည်။<br>ℹ️ (3850MB Plan ရရှိနေပါသည်)";
+        } else {
+            resultBox.style.display = "block";
+            resultBox.className = "result fail";
+            resultBox.innerHTML = "❌ 799 Plan မပါဝင်ပါ။";
+        }
+    }
+</script>
+
+</body>
+</html>
